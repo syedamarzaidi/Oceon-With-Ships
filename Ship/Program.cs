@@ -13,8 +13,7 @@ namespace Sea
         static void Main(string[] args)
         {
             string option = "";
-            string path = "C:\\Users\\kali\\Documents\\Pro\\oceon\\oceon\\oceon\\files\\a.txt";
-           
+            string path = "C:\\Users\\kali\\Documents\\Visual Studio 2015\\Projects\\Ship\\Ship\\files\\data.txt";
             ShipDL.ReadDataFromShip(path);
             while (option != "5")
             {

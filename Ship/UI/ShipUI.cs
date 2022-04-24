@@ -29,8 +29,8 @@ namespace Sea.UI
             Ship stored = ShipDL.isShipExists(shipNumber);
             if (stored != null)
             {
-                Angle longitude = stored.longitude;
-                Angle latitude = stored.latitude;
+                Angle longitude = stored.getLongitude();
+                Angle latitude = stored.getLatitude();
                 Console.WriteLine("Ship Position is {0}\u00b0{1}' {2}\t\tAnd {3}\u00b0{4}'{5}", longitude.getDegree(), longitude.getMinutes(), longitude.getDirection(), latitude.getDegree(), latitude.getMinutes(), latitude.getDirection());
             }
             MainUI.tempStop();

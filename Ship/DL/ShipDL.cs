@@ -19,7 +19,7 @@ namespace Sea.DL
         {
             foreach (var s in ships)
             {
-                if (s.shipNumber == shipNumber)
+                if (s.getShipNumber() == shipNumber)
                 {
                     return s;
                 }
@@ -32,9 +32,9 @@ namespace Sea.DL
             Angle Latitude = Angle.getAngle(latitude);
             foreach (var st in ships)
             {
-                if (Angle.isObjectsEqual(st.longitude, Longitude) && Angle.isObjectsEqual(st.latitude, Latitude))
+                if (Angle.isObjectsEqual(st.getLongitude(), Longitude) && Angle.isObjectsEqual(st.getLatitude(), Latitude))
                 {
-                    return st.shipNumber;
+                    return st.getShipNumber();
                 }
             }
             return null;
@@ -45,9 +45,9 @@ namespace Sea.DL
             Angle Latitude = Angle.getAngle(latitude);
             foreach (var st in ships)
             {
-                if (st.longitude == Longitude && st.latitude == Latitude)
+                if (st.getLongitude() == Longitude && st.getLatitude() == Latitude)
                 {
-                    return st.shipNumber;
+                    return st.getShipNumber();
                 }
             }
             MainUI.tempStop();
@@ -57,10 +57,10 @@ namespace Sea.DL
         {
             for (int i = 0; i < ships.Count; i++)
             {
-                if (ships[i].shipNumber == shipNumber)
-                {
-                    ships[i].longitude = s.longitude;
-                    ships[i].latitude = s.latitude;
+                if (ships[i].getShipNumber() == shipNumber)
+                { 
+                    ships[i].setLongitude(s.getLongitude());
+                    ships[i].setLatitude(s.getLatitude());
                     return true;
                 }
             }
@@ -70,7 +70,7 @@ namespace Sea.DL
         {
             foreach (var s in ships)
             {
-                if (shipNumber == s.shipNumber)
+                if (shipNumber == s.getShipNumber())
                 {
                     return s;
                 }
@@ -82,9 +82,8 @@ namespace Sea.DL
             Ship s = isShipExists(shipNumber);
             Angle longitude = AngleUI.takeInputForAngle("longitude");
             Angle latitude = AngleUI.takeInputForAngle("latitude");
-            s.longitude.changeCompleteAngle(longitude);
-            s.latitude.changeCompleteAngle(latitude);
-
+            s.setLongitude(longitude);
+            s.setLatitude(latitude);
         }
 
         public static void storeShipData(string path,bool isAppend)
@@ -92,9 +91,9 @@ namespace Sea.DL
             StreamWriter file = new StreamWriter(path, isAppend);
             foreach (var s in ships)
             {
-                file.Write(s.shipNumber + ";");
-                Angle longitude = s.longitude;
-                Angle latitude = s.latitude;
+                file.Write(s.getShipNumber() + ";");
+                Angle longitude = s.getLongitude();
+                Angle latitude = s.getLatitude();
                 file.Write(longitude.getDegree() + "," + longitude.getMinutes() + "," + longitude.getDirection() + ";");
                 file.Write(latitude.getDegree() + "," + latitude.getMinutes() + "," + latitude.getDirection());
                 file.WriteLine();
@@ -103,12 +102,12 @@ namespace Sea.DL
             file.Close();
         }
         public static void ReadDataFromShip(string path)
-        {
-            string record;
-            string serialNumber;
-            StreamReader file = new StreamReader(path);
+        {  
             if (File.Exists(path))
             {
+                string record;
+                string serialNumber;
+                StreamReader file = new StreamReader(path);
                 while ((record = file.ReadLine()) != null)
                 {
                     string[] splitedShip = record.Split(';');
@@ -118,6 +117,7 @@ namespace Sea.DL
                     Ship s = new Ship(serialNumber, longitude, latitude);
                    ships.Add(s);
                 }
+                file.Close();
             }
         }
         public static Angle ReturnAngle(string t)
@@ -135,9 +135,9 @@ namespace Sea.DL
         {
             foreach (var st in ships)
             {
-                if (st.longitude == longitude && st.latitude == latitude)
+                if (st.getLongitude() == longitude && st.getLatitude() == latitude)
                 {
-                    return st.shipNumber;
+                    return st.getShipNumber();
                 }
             }
             return null;
