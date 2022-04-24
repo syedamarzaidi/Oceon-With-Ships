@@ -1,0 +1,5 @@
+C:\Users\kali\Documents\Visual Studio 2015\Projects\Ship\Ship\bin\Debug\Ship.exe.config
+C:\Users\kali\Documents\Visual Studio 2015\Projects\Ship\Ship\bin\Debug\Ship.exe
+C:\Users\kali\Documents\Visual Studio 2015\Projects\Ship\Ship\bin\Debug\Ship.pdb
+C:\Users\kali\Documents\Visual Studio 2015\Projects\Ship\Ship\obj\Debug\Ship.exe
+C:\Users\kali\Documents\Visual Studio 2015\Projects\Ship\Ship\obj\Debug\Ship.pdb

@@ -1,0 +1,2 @@
+c:\users\kali\documents\visual studio 2015\Projects\Ship\Ship\bin\Debug\Ship.exe.config
+C:\Users\kali\documents\visual studio 2015\Projects\Ship\Ship\obj\Debug\Ship.csprojResolveAssemblyReference.cache
